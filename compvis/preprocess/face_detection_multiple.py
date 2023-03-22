@@ -7,7 +7,8 @@ def face_detect_multiple (raw_img_path: str, file_type:str) -> str:
     '''
     Detects faces in a a series of folders to create the cropped faces dataset
     Takes a file path and the file extension of the image files (png or jpg...)
-    Need to finish the saving part
+    Saves the files inside a cropped dir in the raw image path, inside a folder
+    with the same name as the original img/pam -> img/cropped/Pam
     '''
     # Get image folder list
     folder_list = glob(os.path.join(raw_img_path, '*'))
