@@ -3,7 +3,7 @@ import cv2
 import os
 import shutil
 
-def face_detect_single(image)-> str:
+def face_detect_single(image:str, file_type:str)-> str:
     '''
     Detects faces in a single image, used for inputs to be predicted. Saves
     the cropped faces in a cropped directory that is erased everytime you run
@@ -18,7 +18,7 @@ def face_detect_single(image)-> str:
         shutil.rmtree(cropped_img_path, ignore_errors=True)
 
     # Load image as CV2 object
-    image = cv2.cvtColor(cv2.imread(f'{image}'), cv2.COLOR_BGR2RGB)
+    image = cv2.cvtColor(cv2.imread(image), cv2.COLOR_BGR2RGB)
 
     #Outputs a faces list of dict, with the bounding box inside the key 'box'
     detector = MTCNN()
@@ -42,7 +42,8 @@ def face_detect_single(image)-> str:
             os.makedirs(cropped_img_path)
 
             # Write image in cropped directory
-            cv2.imwrite(f"{cropped_img_path}/image_face{i}.png", face)
-            print(f"{cropped_img_path}/image_face{i}.png")
+            file_path = f"{cropped_img_path}/image_face{i}.{file_type}"
+            cv2.imwrite(file_path, face)
+            print(f"{file_path} is saved")
 
     return cropped_img_path
