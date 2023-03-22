@@ -31,7 +31,7 @@ def crop_faces(raw_img_path, img, image, faces):
         # Create the directory to save crops if it does not exist
         cropped_img_path = os.path.join(raw_img_path, 'cropped')
         if not os.path.exists(cropped_img_path):
-        os.makedirs(cropped_img_path)
+            os.makedirs(cropped_img_path)
 
         for i, face in enumerate(faces):
 
@@ -46,4 +46,4 @@ def crop_faces(raw_img_path, img, image, faces):
         return cropped_img_path
 
     else:
-        print(Error: no faces detected!)
+        print('Error: no faces detected!')
