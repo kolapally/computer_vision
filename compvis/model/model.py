@@ -64,7 +64,7 @@ def model_train(model, train_set, val_set, epochs = 100, patience = 10):
 
 def model_eval(model, test_set) -> None:
     loss, accuracy = model.evaluate(test_set)
-    print(f"Model loss:{loss}, accuracy:{accuracy}")
+    print(f"✅ Model loss:{loss:.2f}, accuracy:{accuracy:.2f}")
     return None
 
 def model_predict(model, cropped_img_path, class_names, target_size=(96,96)):
@@ -84,7 +84,6 @@ def model_predict(model, cropped_img_path, class_names, target_size=(96,96)):
         img_array = image.img_to_array(img)
         img_batch = np.expand_dims(img_array, axis=0)
         img_preprocessed = preprocess_input(img_batch)
-
 
         prediction = model.predict(img_preprocessed)
         label.append(class_names[np.argmax(prediction,axis=1)[0]])
