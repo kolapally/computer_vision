@@ -17,17 +17,19 @@ def folder_to_dataset_splits(folder_path, labels='inferred',
                                                 image_size = image_size,
                                                 batch_size=batch_size,
                                                 validation_split = validation_split,
+                                                seed = 0,
                                                 subset = 'both',
                                                 interpolation = interpolation,
                                                 crop_to_aspect_ratio = crop_to_aspect_ratio
                                                 )
 
     train_batches = int((1-train_split)*train.cardinality().numpy())
-
     train_set = train.take(train_batches)
     val_set = train.skip(train_batches)
 
-    return train_set, val_set, test_set
+    class_names = train_set.class_names
+
+    return train_set, val_set, test_set, class_names
 
 if __name__ == "__main__":
     folder_to_dataset_splits()
