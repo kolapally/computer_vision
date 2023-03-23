@@ -16,6 +16,7 @@ def face_detect_single(image:str, file_type:str)-> str:
     cropped_img_path = os.path.join(current_directory, 'cropped')
     if os.path.exists(cropped_img_path):
         shutil.rmtree(cropped_img_path, ignore_errors=True)
+    os.makedirs(cropped_img_path)
 
     # Load image as CV2 object
     image = cv2.cvtColor(cv2.imread(image), cv2.COLOR_BGR2RGB)
@@ -39,11 +40,15 @@ def face_detect_single(image:str, file_type:str)-> str:
             face = cv2.cvtColor(face, cv2.COLOR_RGB2BGR)
 
             # create cropped folder in the current directory
-            os.makedirs(cropped_img_path)
+#            if not os.path.exists(cropped_img_path):
+#                os.makedirs(cropped_img_path)
 
             # Write image in cropped directory
             file_path = f"{cropped_img_path}/image_face{i}.{file_type}"
             cv2.imwrite(file_path, face)
             print(f"{file_path} is saved")
 
-    return cropped_img_path
+    return cropped_img_path, faces_coords
+
+if __name__ == "__main__":
+    face_detect_single()

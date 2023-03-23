@@ -1,6 +1,6 @@
 from  tensorflow.keras.utils import image_dataset_from_directory
 
-def folder_to_dataset_splits (folder_path, labels='inferred',
+def folder_to_dataset_splits(folder_path, labels='inferred',
                               label_mode='categorical',
                               image_size=(128,128),
                               validation_split = 0.2,
@@ -28,3 +28,6 @@ def folder_to_dataset_splits (folder_path, labels='inferred',
     val_set = train.skip(train_batches)
 
     return train_set, val_set, test_set
+
+if __name__ == "__main__":
+    folder_to_dataset_splits()
