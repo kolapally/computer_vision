@@ -48,7 +48,7 @@ def face_detect_single(image:str, file_type:str)-> str:
             cv2.imwrite(file_path, face)
             print(f"{file_path} is saved")
 
-    return cropped_img_path, faces_coords
+    return cropped_img_path, faces_coords, image
 
 if __name__ == "__main__":
     face_detect_single()

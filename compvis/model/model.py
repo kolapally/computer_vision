@@ -7,8 +7,10 @@ from tensorflow.keras.applications import ResNet152
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.applications.resnet50 import preprocess_input
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import load_model
 import numpy as np
 import os
+import time
 
 def model_init(input_shape):
     # crop/Input shape should be a global variable to be the same everywhere
@@ -60,12 +62,12 @@ def model_train(model, train_set, val_set, epochs = 100, patience = 10):
 
     return model, history
 
-def model_eval(model, test_set, class_names) -> None:
+def model_eval(model, test_set) -> None:
     loss, accuracy = model.evaluate(test_set)
     print(f"Model loss:{loss}, accuracy:{accuracy}")
     return None
 
-def predict(model, cropped_img_path, class_names, target_size=(96,96)):
+def model_predict(model, cropped_img_path, class_names, target_size=(96,96)):
 
     # The target_size should be a global variable to use in all
 
@@ -88,4 +90,28 @@ def predict(model, cropped_img_path, class_names, target_size=(96,96)):
         label.append(class_names[np.argmax(prediction,axis=1)[0]])
         images.append(img)
 
+    print("✅ Prediction completed")
+
     return label, images
+
+def model_save (model, model_name:str):
+    # Add a local path to save this
+
+    timestamp = time.strftime("%Y%m%d-%H%M%S")
+
+    # save model in the same location inside models folder
+    current_directory = os.getcwd()
+    save_folder = os.path.join(current_directory, "models")
+    os.makedirs(save_folder, exist_ok=True)
+
+    model_path = os.path.join(save_folder, f"{timestamp}_{model_name}.h5")
+
+    model.save(model_path)
+
+    print("✅ Model saved locally")
+
+def model_load(model_path):
+    # Add a local path to load this
+    model = load_model(model_path)
+    print("✅ Model loaded from local disk")
+    return model

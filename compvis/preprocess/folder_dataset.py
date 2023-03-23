@@ -24,10 +24,10 @@ def folder_to_dataset_splits(folder_path, labels='inferred',
                                                 )
 
     train_batches = int((1-train_split)*train.cardinality().numpy())
+    class_names = train.class_names
+
     train_set = train.take(train_batches)
     val_set = train.skip(train_batches)
-
-    class_names = train_set.class_names
 
     return train_set, val_set, test_set, class_names
 
