@@ -3,7 +3,7 @@ import cv2
 import os
 import shutil
 
-def face_detect_single(image:str, file_type:str)-> str:
+def face_detect_single(image, file_type:str)-> str:
     '''
     Detects faces in a single image, used for inputs to be predicted. Saves
     the cropped faces in a cropped directory that is erased everytime you run
@@ -19,7 +19,8 @@ def face_detect_single(image:str, file_type:str)-> str:
     os.makedirs(cropped_img_path)
 
     # Load image as CV2 object
-    image = cv2.cvtColor(cv2.imread(image), cv2.COLOR_BGR2RGB)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
 
     #Outputs a faces list of dict, with the bounding box inside the key 'box'
     detector = MTCNN()
@@ -27,13 +28,13 @@ def face_detect_single(image:str, file_type:str)-> str:
 
     #Loop through the faces, save box coordinates and save each of them in a face_crop folder
     faces_coords = {}
-
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     if len(faces) > 0:
         for i, face in enumerate(faces):
             x, y, w, h = face['box']
 
             # Store coordinates of each face in a dict
-            faces_coords[f'face{i}'] = (x, y, w, h)
+            faces_coords[i] = (x, y, w, h)
 
             # get face crop and make it RGB
             face = image[y:y + h, x:x + w]

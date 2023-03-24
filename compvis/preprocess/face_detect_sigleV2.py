@@ -34,7 +34,7 @@ def face_detect_single(image):
             x, y, w, h = face['box']
 
             # Store coordinates of each face in a dict
-            faces_coords[f'face{i}'] = (x, y, w, h)
+            faces_coords[i] = (x, y, w, h)
 
             # get face crop and make it RGB
             face = image[y:y + h, x:x + w]
