@@ -3,7 +3,7 @@ import cv2
 import os
 from glob import glob
 
-def face_detect_multiple(raw_img_path: str, file_type: str) -> str:
+def face_detect_multipleV2(raw_img_path: str, file_type: str) -> str:
     '''
     Detects faces in a a series of folders to create the cropped faces dataset
     Takes a file path and the file extension of the image files (png or jpg...)
@@ -52,3 +52,6 @@ def face_detect_multiple(raw_img_path: str, file_type: str) -> str:
                 print(f"No faces detected in {img_file}")
 
     return cropped_folder
+
+if __name__ == "__main__":
+    face_detect_multipleV2()
