@@ -42,3 +42,4 @@ secrets.toml
 # Complete to your desire
 =======
 build/
+*.mp4

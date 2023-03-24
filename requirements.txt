@@ -30,3 +30,7 @@ pandas
 matplotlib
 seaborn
 scikit-learn
+
+mtcnn
+opencv-python
+python-multipart
