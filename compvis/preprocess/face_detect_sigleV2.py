@@ -28,7 +28,7 @@ def face_detect_single(image):
 
     #Loop through the faces, save box coordinates and save each of them in a face_crop folder
     faces_coords = {}
-
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     if len(faces) > 0:
         for i, face in enumerate(faces):
             x, y, w, h = face['box']
@@ -38,7 +38,7 @@ def face_detect_single(image):
 
             # get face crop and make it RGB
             face = image[y:y + h, x:x + w]
-            face = cv2.cvtColor(face, cv2.COLOR_RGB2BGR)
+            # face = cv2.cvtColor(face, cv2.COLOR_RGB2BGR)
 
             # Write image in cropped directory
             file_path = f"{cropped_img_path}/image_face{i}.png"
@@ -47,7 +47,7 @@ def face_detect_single(image):
 
             # draw rectangle
             color = (0, 255, 255) # in BGR
-            stroke = 1
+            stroke = 3
             cv2.rectangle(image, (x, y), (x + w, y + h), color, stroke)
 
     return cropped_img_path, faces_coords, image

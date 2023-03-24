@@ -1,11 +1,10 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
-from compvis.preprocess.face_detect_singleV2 import face_detect_single
+from compvis.preprocess.face_detect_sigleV2 import face_detect_single
 
 import numpy as np
 import cv2
-
 app = FastAPI()
 
 # Allow all requests (optional, good for development purposes)
@@ -21,7 +20,7 @@ app.add_middleware(
 def index():
     return {"status": "ok"}
 
-@app.post("/detect_faces/")
+@app.post("/detect_faces")
 async def detect_faces(img: UploadFile=File(...)):
     # Receiving and decoding the image
     contents = await img.read()
