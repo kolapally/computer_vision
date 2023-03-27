@@ -1,10 +1,11 @@
 from  tensorflow.keras.utils import image_dataset_from_directory
+from compvis.params import *
 
 def folder_to_dataset_splits(folder_path, labels='inferred',
                               label_mode='categorical',
-                              image_size=(128,128),
+                              image_size=image_size,
                               validation_split = 0.2,
-                              batch_size=32,
+                              batch_size=batch_size,
                               interpolation = 'bicubic',
                               crop_to_aspect_ratio = True,
                               train_split = 0.2

@@ -21,10 +21,12 @@ raw_data/
 # Data in the package
 # Add files you want to include in the git repo using `git add -f file_name`
 data/
-
+*.jpg
+*.png
 # Saved models
 models/
 *.joblib
+*.h5
 
 # Any pickle files
 *.pickle
