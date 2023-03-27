@@ -8,7 +8,7 @@ from compvis.params import *
 import numpy as np
 import cv2
 app = FastAPI()
-app.state.model = model_load('/home/kolapally/code/kolapally/computer_vision/compvis/model/models/model.h5')
+app.state.model = model_load(model_path)
 # Allow all requests (optional, good for development purposes)
 app.add_middleware(
      CORSMiddleware,
