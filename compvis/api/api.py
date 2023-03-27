@@ -1,12 +1,13 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
-from compvis.preprocess.face_detect_sigleV2 import face_detect_single
-
+from compvis.preprocess.face_detect_single import face_detect_single
+from compvis.model.model import *
+from compvis.api.face_labeling import api_output
 import numpy as np
 import cv2
 app = FastAPI()
-
+app.state.model = model_load('/home/kolapally/code/kolapally/computer_vision/compvis/model/models/model.h5')
 # Allow all requests (optional, good for development purposes)
 app.add_middleware(
      CORSMiddleware,
@@ -30,11 +31,17 @@ async def detect_faces(img: UploadFile=File(...)):
     img = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
 
     # Call face_detect_single function and get results
-    cropped_img_path, faces_coords, image = face_detect_single(img)
+    cropped_img_path, faces_coords, image = face_detect_single(img,'jpg')
 
     # Other elements of the pipeline will go here:
     # Crop -> Predict -> get classified img
-
+    #load trained model
+    # model = model_load('/home/kolapally/code/kolapally/computer_vision/compvis/model/models/model.h5')
+    #Office cast name lables
+    class_names = ['Angela','Dwight','Jim','Kevin','Michael','Pam','unknown']
+    #predict the input image
+    label, images = model_predict(app.state.model,cropped_img_path , class_names, target_size=(128,128))
+    image_output = api_output(image,faces_coords,label)
     # Encoding and responding with the image
-    im = cv2.imencode('.png', image)[1] # extension depends on which format is sent from Streamlit
+    im = cv2.imencode('.png', image_output)[1] # extension depends on which format is sent from Streamlit
     return Response(content=im.tobytes(), media_type="image/png")
