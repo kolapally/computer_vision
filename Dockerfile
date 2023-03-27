@@ -4,7 +4,7 @@
 
 #      Standard version
 FROM python:3.10.6-buster
-
+RUN apt-get update && apt-get install -y python3-opencv
 #      Slim version
 # FROM python:3.10.10-slim-buster
 
@@ -17,7 +17,6 @@ FROM python:3.10.6-buster
 
 # Copy everything we need into the image
 COPY compvis compvis
-
 
 COPY requirements.txt requirements.txt
 COPY setup.py setup.py
