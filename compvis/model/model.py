@@ -67,11 +67,11 @@ def model_eval(model, test_set) -> None:
     print(f"✅ Model loss:{loss:.2f}, accuracy:{accuracy:.2f}")
     return None
 
-def model_predict(model, cropped_img_path, class_names, target_size=(128,128)):
+def model_predict(model, cropped_img_path, class_names, target_size=(96,96),threshold=0.7):
 
     # The target_size should be a global variable to use in all
 
-    img_paths = os.listdir(cropped_img_path)
+    img_paths = sorted (os.listdir(cropped_img_path))
 
     label = []
     images = []
@@ -86,10 +86,13 @@ def model_predict(model, cropped_img_path, class_names, target_size=(128,128)):
         img_preprocessed = preprocess_input(img_batch)
 
         prediction = model.predict(img_preprocessed)
+        if np.max(prediction,axis=1)[0] > threshold:
+            label.append(class_names[np.argmax(prediction,axis=1)[0]])
+        else:
+            label.append(class_names[len(class_names)-1])
 
-        label.append(class_names[np.argmax(prediction,axis=1)[0]])
         images.append(img)
-        print(f'{img_path} - {class_names[np.argmax(prediction,axis=1)[0]]}')
+        print(f'{img_path}--{np.max(prediction,axis=1)[0]}--{class_names[np.argmax(prediction,axis=1)[0]]}')
     print("✅ Prediction completed")
 
     return label, images
@@ -112,6 +115,6 @@ def model_save (model, model_name:str):
 
 def model_load(model_path):
     # Add a local path to load this
-    model = load_model(model_path, compile=False)
+    model = load_model(model_path,compile=False)
     print("✅ Model loaded from local disk")
     return model
