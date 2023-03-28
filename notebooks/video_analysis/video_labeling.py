@@ -1,3 +1,5 @@
+import cv2
+
 def video_labelled(video_path, img_labelled_list, label_frequency=1, label_duration=2):
 
     # Load the original video
