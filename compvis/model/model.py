@@ -8,15 +8,16 @@ from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.applications.resnet50 import preprocess_input
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
+from compvis.params import *
+from google.cloud import storage
 import numpy as np
 import os
 import time
-# from compvis.params import *
 
-def model_init(input_shape):
+def model_init(image_shape):
     # crop/Input shape should be a global variable to be the same everywhere
 
-    base_model = ResNet152(input_shape = input_shape, include_top = False, weights = 'imagenet')
+    base_model = ResNet152(input_shape = image_shape, include_top = False, weights = 'imagenet')
 
     # Freeze the layers of the pre-trained model
     for layer in base_model.layers:
@@ -48,7 +49,7 @@ def model_compile(model,
     print("✅ model compiled")
     return model
 
-def model_train(model, train_set, val_set, epochs = 100, patience = 10):
+def model_train(model, train_set, val_set, epochs = epochs, patience = patience):
 
     es = EarlyStopping(monitor='val_accuracy', patience = patience, restore_best_weights=True)
 
@@ -68,7 +69,7 @@ def model_eval(model, test_set) -> None:
     print(f"✅ Model loss:{loss:.2f}, accuracy:{accuracy:.2f}")
     return None
 
-def model_predict(model, cropped_img_path, class_names, target_size=(128,128),threshold=0.7):
+def model_predict(model, cropped_img_path, class_names, target_size=image_size,threshold=threshold):
 
     # The target_size should be a global variable to use in all
 
@@ -115,7 +116,28 @@ def model_save (model, model_name:str):
     print("✅ Model saved locally")
 
 def model_load(model_path):
-    # Add a local path to load this
-    model = load_model(model_path,compile=False)
-    print("✅ Model loaded from local disk")
-    return model
+    # Create folder if it does not exist
+    model_folder = os.path.dirname(model_path)
+    if not os.path.exists(model_folder):
+        os.makedirs(model_folder)
+
+    # Load from local if it exists
+    if os.path.exists(model_path):
+        model = load_model(model_path, compile=False)
+        print("✅ Model loaded from local disk")
+        return model
+    # Load from cloud if it does not exist
+    else:
+        print("loading from cloud")
+        client = storage.Client()
+        blobs = list(client.get_bucket(bucket_name).list_blobs(prefix="model"))
+        try:
+            latest_blob = max(blobs, key=lambda x: x.updated)
+            model_path_to_save = os.path.join(model_folder, latest_blob.name)
+            latest_blob.download_to_filename(model_path_to_save)
+            model = load_model(model_path_to_save)
+            print("✅ Latest model downloaded from cloud storage")
+            return model
+        except:
+            print(f"\n❌ No model found on GCS bucket {bucket_name}")
+            return None
