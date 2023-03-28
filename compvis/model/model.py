@@ -11,6 +11,7 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import os
 import time
+# from compvis.params import *
 
 def model_init(input_shape):
     # crop/Input shape should be a global variable to be the same everywhere
@@ -67,7 +68,7 @@ def model_eval(model, test_set) -> None:
     print(f"✅ Model loss:{loss:.2f}, accuracy:{accuracy:.2f}")
     return None
 
-def model_predict(model, cropped_img_path, class_names, target_size=(96,96),threshold=0.7):
+def model_predict(model, cropped_img_path, class_names, target_size=(128,128),threshold=0.7):
 
     # The target_size should be a global variable to use in all
 
