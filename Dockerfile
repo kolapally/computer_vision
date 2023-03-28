@@ -35,4 +35,7 @@ RUN pip install .
 # TODO: to speed up, you can load your model from MLFlow or Google Cloud Storage at startup using
 # RUN python -c 'replace_this_with_the_commands_you_need_to_run_to_load_the_model'
 
+COPY credentials_container.json credentials.json
+RUN mkdir models
+
 CMD uvicorn compvis.api.api:app --host 0.0.0.0 --port $PORT
