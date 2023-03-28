@@ -122,8 +122,10 @@ def model_load(model_path):
     #    os.makedirs(model_folder)
 
     # Load from local if it exists
-    if os.path.exists(model_path):
-        model = load_model(model_path, compile=False)
+    current_path = os.path.dirname(__file__)
+    model_path_final = os.path.join(current_path, model_path)
+    if os.path.exists(model_path_final):
+        model = load_model(model_path_final, compile=False)
         print("✅ Model loaded from local disk")
         return model
     # Load from cloud if it does not exist
