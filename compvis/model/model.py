@@ -125,8 +125,9 @@ def model_load(model_path):
     current_path = os.path.dirname(__file__)
     model_path_final = os.path.join(current_path, model_path)
     if os.path.exists(model_path_final):
+        print("loading from local disk")
         model = load_model(model_path_final, compile=False)
-        print("✅ Model loaded from local disk")
+        print(" ✅ Model loaded from local disk")
         return model
     # Load from cloud if it does not exist
     else:
@@ -141,5 +142,5 @@ def model_load(model_path):
             print("✅ Latest model downloaded from cloud storage")
             return model
         except:
-            print(f"\n❌ No model found on GCS bucket {bucket_name}")
+            print(f"\n:x: No model found on GCS bucket {bucket_name}")
             return None
