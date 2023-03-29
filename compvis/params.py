@@ -1,5 +1,4 @@
 import os
-
 class_names = ['Angela','Dwight','Jim','Kevin','Michael','Pam','unknown']
 #path to model .h5 that we save or get it from cloud
 image_size = (128,128)
