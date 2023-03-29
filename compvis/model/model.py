@@ -117,27 +117,30 @@ def model_save (model, model_name:str):
 
 def model_load(model_path):
     # Create folder if it does not exist
-    model_folder = os.path.dirname(model_path)
-    if not os.path.exists(model_folder):
-        os.makedirs(model_folder)
+    #model_folder = os.path.dirname(model_path)
+    #if not os.path.exists(model_folder):
+    #    os.makedirs(model_folder)
 
     # Load from local if it exists
-    if os.path.exists(model_path):
-        model = load_model(model_path, compile=False)
-        print("✅ Model loaded from local disk")
+    current_path = os.path.dirname(__file__)
+    model_path_final = os.path.join(current_path, model_path)
+    if os.path.exists(model_path_final):
+        print("loading from local disk")
+        model = load_model(model_path_final, compile=False)
+        print(" ✅ Model loaded from local disk")
         return model
     # Load from cloud if it does not exist
     else:
         print("loading from cloud")
         client = storage.Client()
-        blobs = list(client.get_bucket(bucket_name).list_blobs(prefix="model"))
+        blobs = list(client.get_bucket(bucket_name).list_blobs(prefix="models"))
         try:
             latest_blob = max(blobs, key=lambda x: x.updated)
-            model_path_to_save = os.path.join(model_folder, latest_blob.name)
+            model_path_to_save = latest_blob.name
             latest_blob.download_to_filename(model_path_to_save)
             model = load_model(model_path_to_save)
             print("✅ Latest model downloaded from cloud storage")
             return model
         except:
-            print(f"\n❌ No model found on GCS bucket {bucket_name}")
+            print(f"\n:x: No model found on GCS bucket {bucket_name}")
             return None
