@@ -3,7 +3,7 @@ Welcome to CompVis, our proeject in implementign a Deep Learning model to detect
 
 # Project Developers
 - Kolapally Sai kalyan | <a href="https://github.com/kolapally" target="_blank">GitHub</a> | Portfolio
-- Daniel Osório| <a href="https://github.com/dosorio79" target="_blank">Github</a> | <a href="https://troopl.com/danielsosorio">Portfolio</a>
+- Daniel Osório| <a href="https://github.com/dosorio79" target="_blank">Github</a> | <a href="https://troopl.com/danielsosorio">Portfolio</a> 
 - Merle Buchmann
 - Kranthi Maddishetty
 
