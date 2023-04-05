@@ -8,7 +8,8 @@ Welcome to CompVis, our proeject in implementign a Deep Learning model to detect
 - Kranthi Maddishetty
 
 # Tech Stack
-- Python backend - Face detection using MTCNN, face detection deep learning model using TensorFlow transfer learning with EfficientNetV2, API with FastAPI and Streamlit for interface.
+- Python backend - Face detection using MTCNN, face detection deep learning model using TensorFlow transfer learning with EfficientNetV2, API with FastAPI 
+- Streamlit frontend
 
 # Project scope and duration
 This project was developed as part of the Le Wagon Data Science Bootcamp Batch 1181 Online (Feb-Mar2023) over the course of two weeks
