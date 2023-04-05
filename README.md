@@ -7,7 +7,7 @@ Welcome to CompVis, our proeject in implementing a Deep Learning model to detect
     <td>Kolapally Sai kalyan</td>
     <td><a href="https://github.com/kolapally" target="_blank">GitHub</a></td>
     <td>Portfolio</td>
-    <td>LinkedIn</td>
+    <td><a href="https://www.linkedin.com/in/kolapally/" target="_blank">LinkedIn</a></td>
   </tr>
   <tr>
     <td>Daniel Osório</td>
