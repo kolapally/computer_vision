@@ -2,8 +2,8 @@
 Welcome to CompVis, our proeject in implementign a Deep Learning model to detect and recognize faces from video files applied to industrial safety.
 
 # Project Developers
-- <a href="https://github.com/kolapally">Kolapally Sai kalyan</a>
-- <a href="https://github.com/dosorio79">Daniel Osório</a>
+- <a href="https://github.com/kolapally" target="_blank">Kolapally Sai kalyan</a>
+- <a href="https://github.com/dosorio79" target="_blank">Daniel Osório</a>
 - Merle Buchmann
 - Kranthi Maddishetty
 
