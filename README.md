@@ -4,7 +4,7 @@ Welcome to CompVis, our proeject in implementing a Deep Learning model to detect
 # 💡 Project Developers
 <table>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/121227950/232547423-9d75afa1-4506-4a63-b075-d800fdb18ae4.png" width="80"></td>
+    <td><img src="https://user-images.githubusercontent.com/121227950/232547987-8162ccde-d3ba-4893-bcdf-fbe1c1b470f5.png" width="80"></td>
     <td>Kolapally Sai kalyan</td>
     <td><a href="https://github.com/kolapally" target="_blank">GitHub</a></td>
     <td>Portfolio</td>
