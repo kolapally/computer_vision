@@ -4,24 +4,28 @@ Welcome to CompVis, our proeject in implementing a Deep Learning model to detect
 # 💡 Project Developers
 <table>
   <tr>
+    <td><img src="https://user-images.githubusercontent.com/121227950/232478895-b4deb523-0b2e-4f2f-bb90-ac193933f33f.png" width="80"></td>
     <td>Kolapally Sai kalyan</td>
     <td><a href="https://github.com/kolapally" target="_blank">GitHub</a></td>
     <td>Portfolio</td>
     <td><a href="https://www.linkedin.com/in/kolapally/" target="_blank">LinkedIn</a></td>
   </tr>
   <tr>
+    <td><img src="https://user-images.githubusercontent.com/121227950/232478965-e247fd12-5c77-44ee-a97f-a977737a070f.png" width="80"></td>
     <td>Daniel Osório</td>
     <td><a href="https://github.com/dosorio79" target="_blank">GitHub</a></td>
     <td><a href="https://troopl.com/danielsosorio" target="_blank">Portfolio</a></td>
     <td><a href="https://www.linkedin.com/in/dosorio/" target="_blank">LinkedIn</a></td>
   </tr>
   <tr>
+    <td><img src="https://user-images.githubusercontent.com/121227950/232478686-028b704f-3a58-4c9c-894e-b1a0e10ea8f3.png" width="80"></td>
     <td>Merle Buchmann</td>
     <td><a href="https://github.com/marierae">GitHub</a></td>
     <td>Portfolio</td>
     <td>LinkedIn</td>
   </tr>
   <tr>
+    <td><img src="https://user-images.githubusercontent.com/121227950/232479017-85aaa550-1856-47e6-a56c-faf54daa21fd.png" width="80"></td>
     <td>Kranthi Maddishetty</td>
     <td>GitHub</td>
     <td>Portfolio</td>
