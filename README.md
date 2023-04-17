@@ -52,7 +52,7 @@ The primary objective of our project was to leverage computer vision and advance
     <ul>-Select the video option on the left navigation bar, upload an video and the app returns a final video with a face bounding box and predicted face identification</ul>
     <ul>-By default the app will label the first 30 seconds of the video and will sample for faces every second. The app returns a video with face bounding box and predicted face identification. The labelled frames are duplicated for a defined number of times in order to better visualise them</ul>
     </td>
-    <td><img src="https://user-images.githubusercontent.com/121227950/232462331-08a0adcd-d1a1-4f39-89a9-bfb0f2e53509.png" width="500"></td>
+    <td><img src="https://user-images.githubusercontent.com/121227950/232471237-8ac04bc3-749a-4ab7-9f50-db691895acf2.png" width="500"></td>
   </tr>  
 </table>
 
