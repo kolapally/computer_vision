@@ -29,7 +29,7 @@ Welcome to CompVis, our proeject in implementing a Deep Learning model to detect
     <td>Kranthi Maddishetty</td>
     <td>GitHub</td>
     <td>Portfolio</td>
-    <td>LinkedIn</td>
+    <td><a href="https://www.linkedin.com/in/kranthi-maddishetty/">LinkedIn</a></td>
   </tr>
 </table>
 
