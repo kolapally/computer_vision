@@ -22,7 +22,7 @@ Welcome to CompVis, our proeject in implementing a Deep Learning model to detect
     <td>Merle Buchmann</td>
     <td><a href="https://github.com/marierae">GitHub</a></td>
     <td>Portfolio</td>
-    <td>LinkedIn</td>
+    <td><a href="https://www.linkedin.com/in/merle-buchmann-784285163/">LinkedIn</a></td>
   </tr>
   <tr>
     <td><img src="https://user-images.githubusercontent.com/121227950/232479017-85aaa550-1856-47e6-a56c-faf54daa21fd.png" width="80"></td>
