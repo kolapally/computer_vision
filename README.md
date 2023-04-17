@@ -38,6 +38,7 @@ The primary objective of our project was to leverage computer vision and advance
 - <a href="https://streamlit.io/">Streamlit</a> frontend
 
 # 📌 App tutorial
+ 🧪 You can test our app here https://compvis.streamlit.app/ 🧪
 <table>
   <tr>
     <td><b>Detection and identification of faces on a single image</b>
