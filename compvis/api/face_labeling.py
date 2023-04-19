@@ -27,5 +27,18 @@ def api_output(image,faces_coords,label):
             color = color_map[label[face]]
             stroke = 3
             cv2.rectangle(image, (x, y), (x + w, y + h), color, stroke)
-            cv2.putText(image,label[face],(x-5, y-15),font,0.9,color=color)
+            # Calculate the center point of the face box
+            center_x = x + w // 2
+            center_y = y + h // 2
+
+            # Calculate the size of the text
+            text_size, _ = cv2.getTextSize(label[face], font, 0.9, 2)
+
+            # Calculate the position of the text so it is centered above the face box
+            text_x = center_x - text_size[0] // 2
+            text_y = y - 15 - text_size[1]
+
+            # Draw the text
+            cv2.putText(image, label[face], (text_x, text_y), font, 0.9, color=color)
+           
     return image
