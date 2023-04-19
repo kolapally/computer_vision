@@ -1,3 +1,4 @@
+#Imports from fastapi and functions from the package
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
@@ -7,8 +8,9 @@ from compvis.api.face_labeling import api_output
 from compvis.params import model_path,class_names,image_size
 import numpy as np
 import cv2
-
+# initialise fastapi
 app = FastAPI()
+# Caches the model memory and increases performance
 app.state.model = model_load(model_path)
 # Allow all requests (optional, good for development purposes)
 app.add_middleware(
@@ -18,11 +20,12 @@ app.add_middleware(
      allow_methods=["*"],  # Allows all methods
      allow_headers=["*"],  # Allows all headers
  )
-
+# api returns when everything is working 
 @app.get("/")
 def index():
     return {"status": "ok"}
 
+# api takes image as an input 
 @app.post("/detect_faces")
 async def detect_faces(img: UploadFile=File(...)):
     # Receiving and decoding the image
