@@ -35,8 +35,8 @@ def api_output(image,faces_coords,label):
             text_size, _ = cv2.getTextSize(label[face], font, 0.9, 2)
 
             # Calculate the position of the text so it is centered above the face box
-            text_x = center_x - text_size[0] // 2
-            text_y = y - 15 - text_size[1]
+            text_x = center_x + text_size[0] // 2
+            text_y = y + 15 - text_size[1]
 
             # Draw the text
             cv2.putText(image, label[face], (text_x, text_y), font, 0.9, color=color)
