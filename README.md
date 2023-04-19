@@ -7,7 +7,7 @@ Welcome to CompVis, our proeject in implementing a Deep Learning model to detect
     <td><img src="https://user-images.githubusercontent.com/121227950/232547987-8162ccde-d3ba-4893-bcdf-fbe1c1b470f5.png" width="80"></td>
     <td>Kolapally Sai kalyan</td>
     <td><a href="https://github.com/kolapally" target="_blank">GitHub</a></td>
-    <td>Portfolio</td>
+    <td><a href="https://troopl.com/kolapally" target="_blank">Portfolio</a></td>
     <td><a href="https://www.linkedin.com/in/kolapally/" target="_blank">LinkedIn</a></td>
   </tr>
   <tr>
