@@ -1,3 +1,4 @@
+# All needed libraries are imported for model
 from tensorflow.keras.layers import Dense, Flatten, Dropout
 from tensorflow.keras.models import Sequential
 # import efficientnet.keras as efn
@@ -16,7 +17,15 @@ import time
 
 def model_init(image_shape):
     # crop/Input shape should be a global variable to be the same everywhere
-
+     """
+    Initializes a pre-trained model (transfer learning) model for image classification.
+    
+    Args:
+    image_shape: tuple, the shape of the input image (height, width, channels(RGB)).
+    
+    Returns:
+    model: a tenserflow.Keras Sequential model object.
+    """
     base_model = ResNet152(input_shape = image_shape, include_top = False, weights = 'imagenet')
 
     # Freeze the layers of the pre-trained model
@@ -41,7 +50,18 @@ def model_compile(model,
                optimizer='adam',
                metrics=['accuracy']):
     # optimizer = optimizers.Adam(learning_rate=learning_rate)
-
+    """
+    Compiles the specified tenserflow.Keras model with the given loss, optimizer, and evaluation metrics.
+    
+    Args:
+    model: a Keras model object.
+    loss: string, the loss function to use for training the model.
+    optimizer: string or optimizer object, the optimizer to use for training the model.
+    metrics: list of strings, the evaluation metrics to use for the model.
+    
+    Returns:
+    model: the compiled tenserflow.Keras model object.
+    """
     model.compile(loss=loss,
               optimizer = optimizer,
               metrics = metrics
@@ -50,7 +70,21 @@ def model_compile(model,
     return model
 
 def model_train(model, train_set, val_set, epochs = epochs, patience = patience):
-
+    
+    """
+    Trains the specified tenserflow.Keras model on the given training and validation sets.
+    
+    Args:
+    model: a tenserflow.Keras model object.
+    train_set: a tenserflow.Keras ImageDataGenerator object for the training set.
+    val_set: a tenserflow.Keras ImageDataGenerator object for the validation set.
+    epochs: integer, the number of epochs to train the model for.
+    patience: integer, the number of epochs to wait before early stopping if the validation accuracy does not improve.
+    
+    Returns:
+    model: the trained tenserflow.Keras model object.
+    history: a tenserflow.Keras History object containing the training history.
+    """
     es = EarlyStopping(monitor='val_accuracy', patience = patience, restore_best_weights=True)
 
     history = model.fit(train_set,
@@ -65,6 +99,16 @@ def model_train(model, train_set, val_set, epochs = epochs, patience = patience)
     return model, history
 
 def model_eval(model, test_set) -> None:
+    """
+    Evaluates the specified tenserflow.Keras model on the given test set.
+    
+    Args:
+    model: a tenserflow.Keras model object.
+    test_set: a tenserflow.Keras ImageDataGenerator object for the test set.
+    
+    Returns:
+    None
+    """
     loss, accuracy = model.evaluate(test_set)
     print(f"✅ Model loss:{loss:.2f}, accuracy:{accuracy:.2f}")
     return None
@@ -72,7 +116,21 @@ def model_eval(model, test_set) -> None:
 def model_predict(model, cropped_img_path, class_names, target_size=image_size,threshold=threshold):
 
     # The target_size should be a global variable to use in all
-
+    """
+    Uses the specified Keras model to make predictions on the images in the given directory.
+    
+    Args:
+    model: a Keras model object.
+    cropped_img_path: string, the path to the directory containing the images to predict on.
+    class_names: list of strings, the names of the classes that the model can predict.
+    target_size: tuple, the size of the input images to the model (height, width).
+    threshold: float, the probability threshold below which predictions will be considered "unknown".
+    
+    Returns:
+    label: list of strings, the predicted labels for each of the input images.
+    images: list of PIL Image objects, the input images that were predicted on.
+    """
+    
     img_paths = sorted (os.listdir(cropped_img_path))
 
     label = []
@@ -100,8 +158,18 @@ def model_predict(model, cropped_img_path, class_names, target_size=image_size,t
     return label, images
 
 def model_save (model, model_name:str):
+    """
+    Saves the specified tenserflow.Keras model to a local file with the given name and timestamp.
+    
+    Args:
+    model: a tenserflow.Keras model object.
+    model_name: string, the name to give the saved model file.
+    
+    Returns:
+    None
+    """
+    
     # Add a local path to save this
-
     timestamp = time.strftime("%Y%m%d-%H%M%S")
 
     # save model in the same location inside models folder
@@ -116,11 +184,15 @@ def model_save (model, model_name:str):
     print("✅ Model saved locally")
 
 def model_load(model_path):
-    # Create folder if it does not exist
-    #model_folder = os.path.dirname(model_path)
-    #if not os.path.exists(model_folder):
-    #    os.makedirs(model_folder)
-
+    """
+    Loads the specified tenserflow.Keras model from a local file or from a Google Cloud Storage bucket.
+    
+    Args:
+    model_path: string, the path to the model file to load.
+    
+    Returns:
+    model: a tenserflow.Keras model object, or None if the model could not be loaded.
+    """
     # Load from local if it exists
     current_path = os.path.dirname(__file__)
     model_path_final = os.path.join(current_path, model_path)
