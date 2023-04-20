@@ -40,9 +40,6 @@ def face_detect_single(image, file_type:str)-> str:
             face = image[y:y + h, x:x + w]
             face = cv2.cvtColor(face, cv2.COLOR_RGB2BGR)
 
-            # create cropped folder in the current directory
-#            if not os.path.exists(cropped_img_path):
-#                os.makedirs(cropped_img_path)
 
             # Write image in cropped directory
             file_path = f"{cropped_img_path}/image_face{i}.{file_type}"
