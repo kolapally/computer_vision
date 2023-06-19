@@ -33,7 +33,7 @@ Welcome to CompVis, our proeject in implementing a Deep Learning model to detect
   </tr>
 </table>
 
-# 🔭 Project overview
+# 🔭 Project Overview
 The primary objective of our project was to **leverage computer vision and advanced face detection and recognition technology for emergency monitoring** in industrial safety contexts. To achieve this goal, we used an episode of the popular TV show "The Office" that depicted a fire drill scenario. We then trained our face recognition model using a dataset of six characters from the show. Our ultimate aim is to **create a robust and reliable tool that can help improve emergency response** by quickly identifying and tracking individuals.
 
 # 🖧 Tech Stack
@@ -50,22 +50,26 @@ The primary objective of our project was to **leverage computer vision and advan
   <tr>
     <td><b>Detection and identification of faces on a single image</b>
     <ul>-Select the image option on the left navigation bar, upload an image and the app returns a final image with a face bounding box and predicted face identification</ul>
-        <ul>-By default the app uses a threshold of 70% probability to consider the identification positive. Bellow that value faces are labelled as unknown</ul>
+        <ul>-By default the app uses a threshold of 70% probability to consider the identification positive. Bellow that value faces are labeled as unknown</ul>
     </td>
-    <td><img src="https://user-images.githubusercontent.com/121227950/232462331-08a0adcd-d1a1-4f39-89a9-bfb0f2e53509.png" width="500"> (Click to enlarge)</td>
+    <td><img src="https://user-images.githubusercontent.com/121227950/232462331-08a0adcd-d1a1-4f39-89a9-bfb0f2e53509.png" width="500"> 
+      (Click to enlarge)
+    </td>
   </tr>
   <tr>
     <td><b>Detection and identification of faces on a video</b>
-    <ul>-Select the video option on the left navigation bar, upload an video and the app returns a final video with a face bounding box and predicted face identification</ul>
-    <ul>-By default the app will label the first 30 seconds of the video and will sample for faces every second. The app returns a video with face bounding box and predicted face identification. The labelled frames are duplicated for a defined number of times in order to better visualise them</ul>
+    <ul>-Select the video option on the left navigation bar, upload a video, and the app returns a final video with a face bounding box and predicted face identification</ul>
+    <ul>-By default the app will label the first 30 seconds of the video and will sample faces every second. The app returns a video with a face bounding box and predicted face identification. The labeled frames are duplicated a defined number of times to better visualize them</ul>
     </td>
     <td><img src="https://user-images.githubusercontent.com/121227950/232471237-8ac04bc3-749a-4ab7-9f50-db691895acf2.png" width="500"> (Click to enlarge)</td>
   </tr>  
    <tr>
-    <td><b>See a quick demo of this app <a href="https://drive.google.com/file/d/1nbOl3mUyAyEcyQH7v04KyAABqTwXVLKO/view?usp=drive_link">here</a></b>
-      </td>
+    <td style="vertical-align:top"><b>See a quick demo of this app <a href=https://drive.google.com/file/d/1nbOl3mUyAyEcyQH7v04KyAABqTwXVLKO/view?usp=drive_link">here</a></b></td>
+    <td>
+      <img src="https://github.com/kolapally/computer_vision/assets/121227950/383a339d-5dab-4579-90be-9f29daae4a0b">
+    </td> 
   </tr>  
 </table>
 
 # 🚀Project scope and duration
-This project was developed as part of the Le Wagon Data Science Bootcamp Batch 1181 Online (Feb-Mar2023) over the course of two weeks
+This project was developed as part of the Le Wagon Data Science Bootcamp Batch 1181 Online (Feb-Mar2023) over two weeks
