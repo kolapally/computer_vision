@@ -1,5 +1,5 @@
 # CompVis - Computer Vision for Industrial Safety
-Welcome to CompVis, our proeject in implementing a Deep Learning model to detect and recognize faces from video files applied to industrial safety.
+Welcome to CompVis, our project in implementing a Deep Learning model to detect and recognize faces from video files applied to industrial safety.
 
 # 💡 Project Developers
 <table>
