@@ -87,3 +87,6 @@ async def detect_video(video: UploadFile=File(...)):
     with open(mp4_file_path, "rb") as f:
         file_content = f.read()
     return Response(content=file_content,headers=headers)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8080)
